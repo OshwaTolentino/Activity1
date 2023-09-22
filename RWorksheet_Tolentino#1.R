@@ -95,9 +95,7 @@ cat("Maximum values in each range of 10 numbers from 8.5:", max_values_8.5, "\n"
 
 
 #9. *Print a vector with the integers between 1 and 100 that are not divisible by 3, 5 and 7 using filter option.
-integers <- seq(1, 100)
-filtered_integers <- subset(integers, !(integers %% 3 == 0 | integers %% 5 == 0 | integers %% 7 == 0))
-print(filtered_integers)
+Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
 
 
 #10. Sequence backwards of the integers from 1 to 100.
