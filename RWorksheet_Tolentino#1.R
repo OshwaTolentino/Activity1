@@ -140,9 +140,8 @@ print(a, na.print = "-999")
 
 #15. A special type of function calls can appear on the left hand side of the assignment operator as in > class(x) <- "foo".
 # Prompt the user for their name
-name <- readline(prompt="Input your name: ")
-age <- readline(prompt="Input your age: ")
-message <- paste("My name is", name, "and I am", age, "years old.")
-print(message)
+name = readline(prompt="Input your name: ")
+age = readline(prompt="Input your age: ")
+print(paste("My name is",name, "and I am",age ,"years old."))
 print(R.version.string)
-#When you run this code, it will prompt you to enter your name and age. After you provide the inputs, it will print a message using the provided name and age and also display the version of R.
+#Initially if you run the code as it is it the first 3 line of code displays the same code provided but the last line results to the version of the R that you are using.
