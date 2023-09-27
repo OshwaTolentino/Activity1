@@ -63,13 +63,23 @@ df <- data.frame(Month = month,
 
 df_transposed <- t(df)
 df_vertical <- as.data.frame(df_transposed)
-df_vertical
+df_verticale
   
-#b.   
-sum1 <- sum(price_per_liter)
-sum1
-sum2 <- sum(purchase_quantity)
-sum2
-multiply <- (sum1*sum2)
-multiply 
+#b. The average fuel expenditure of Mr. Cruz from Jan to June is 59.2625 
+liter <- c(52.50, 57.25, 60.00, 65.00, 74.25, 54.00)
+purchase <- c(25, 30, 40, 50, 10, 45)
+expenditure_mean <- weighted.mean(liter, purchase)
+expenditure_mean
 
+#7. 
+data <- c(length(rivers), sum(rivers), mean(rivers), median(rivers), var(rivers),
+          sd(rivers), min(rivers), max(rivers))
+
+#8. 
+PowerRanking <-seq(1:25)
+CelebrityName <- c("Tom Cruise" , "Rolling Stones", "Oprah Winfrey", "U2","","Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman")
+Pay <- c(25, 30, 40, 50, 10, 45)
+
+df <- data.frame(Month = month, 
+                 Price_per_liter = price_per_liter,
+                 Purchase_quantity = purchase_quantity)
