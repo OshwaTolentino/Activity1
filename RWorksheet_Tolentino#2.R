@@ -63,7 +63,7 @@ df <- data.frame(Month = month,
 
 df_transposed <- t(df)
 df_vertical <- as.data.frame(df_transposed)
-df_verticale
+df_vertical
   
 #b. The average fuel expenditure of Mr. Cruz from Jan to June is 59.2625 
 liter <- c(52.50, 57.25, 60.00, 65.00, 74.25, 54.00)
@@ -76,10 +76,62 @@ data <- c(length(rivers), sum(rivers), mean(rivers), median(rivers), var(rivers)
           sd(rivers), min(rivers), max(rivers))
 
 #8. 
-PowerRanking <-seq(1:25)
-CelebrityName <- c("Tom Cruise" , "Rolling Stones", "Oprah Winfrey", "U2","","Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman")
-Pay <- c(25, 30, 40, 50, 10, 45)
+TopCelebrity <- data.frame (
+PowerRanking = 1:25,
+CelebrityName = c("Tom Cruise" , "Rolling Stones", "Oprah Winfrey", "U2","Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman", "Phil Mickelson", "J.K Rowling", "Bradd Pitt", "Peter Jackson", "Dr. Phil McGraw", "Jay Lenon", "Celine Dion", "Kobe Bryant"),
+Pay = c(67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 75, 25, 39, 45, 32, 40, 31)
+)
+TopCelebrity
 
-df <- data.frame(Month = month, 
-                 Price_per_liter = price_per_liter,
-                 Purchase_quantity = purchase_quantity)
+#b
+NewRanking <- replace(PowerRanking, 19, 15)
+NewRanking
+NewPay <- replace(Pay, 19, 90)
+NewPay 
+
+Newtopceleb <- data.frame (
+PowerRanking = NewRanking, CelebrityName, Pay = NewPay)
+Newtopceleb
+
+
+#c
+# Install and load the 'writexl' library for writing Excel files
+install.packages("writexl")
+library(writexl)
+write_xlsx(TopCelebrity, path = "PowerRanking.xlsx")
+write.csv(TopCelebrity, file = "PowerRanking.csv", row.names = FALSE)
+
+#d
+subset_data <- TopCelebrity[10:20, ]
+save(subset_data, file = "Ranks.RData")
+print(subset_data)
+
+#e. This script will create an RData file named "Ranks.RData" containing the subset of rows 10 to 20 from the original data frame.
+
+
+#9
+
+
+#10
+#a.
+vegetables <- c("Carrot", "Broccoli", "Spinach", "Tomato", "Cucumber", "Bell Pepper", "Eggplant", "Zucchini", "Kale", "Asparagus")
+vegetables
+
+#b.
+vegetables <- c(vegetables, "Cauliflower", "Mushroom")
+vegetables
+
+#c.
+vegetables <- append(vegetables, c("Sweet Potato", "Cabbage", "Radish", "Artichoke"), after = 5)
+num_datapoints <- length(vegetables)
+vegetables
+cat("Number of datapoints:", num_datapoints, "\n")
+
+#d.
+vegetables <- vegetables[-c(5, 10, 15)]
+num_vegetables_left <- length(vegetables)
+vegetables
+cat("Number of vegetables left:", num_vegetables_left, "\n")
+
+
+
