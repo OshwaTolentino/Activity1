@@ -110,6 +110,24 @@ print(subset_data)
 
 
 #9
+#a
+install.packages("readxl")
+library(readxl)
+hotel_data <- read_excel("Hotels-Vienna.xlsx")
+
+#b
+dim(hotel_data)
+
+#c
+selected_columns <- hotel_data[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "ratings")]
+
+#d
+save(selected_columns, file = "new.RData")
+
+#e
+load("new.RData")
+head(selected_columns, n = 6)
+tail(selected_columns, n = 6)
 
 
 #10
