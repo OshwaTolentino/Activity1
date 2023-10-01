@@ -22,22 +22,16 @@ age2 <- ages[3]
 age2
 
 #b. The 2nd is 28 and 4th element is 36.
-age3 <- ages[2]
-age4 <- ages[4]
-age3
-age4
+doubleElement <-ages[c(2,4)]
+dou
 
 #c.
-exclude <- ages[-4]
+exclude <- ages[-c(4, 12)]
 exclude
-exclude2 <- ages[-12]
-exclude2
-combine <-c(exclude,exclude2)
-combine [-c(exclude,exclude2)]
 
 
-#4. Create a vector x <- c("first"=3, "second"=0, "third"=9). Then named the
-vector, names(x).
+
+#4. Create a vector x <- c("first"=3, "second"=0, "third"=9). Then named the vector, names(x).
 
 x <- c("first"=3, "second"=0, "third"=9)
 names(x)
@@ -110,6 +104,26 @@ print(subset_data)
 
 
 #9
+#a.
+library(readxl)
+ExcelDta <- read_excel("hotels-vienna.xlsx")
+ExcelDta
+
+#b.
+dimensions <- dim(ExcelDta)
+dimensions
+
+#c.
+selected_columns <- ExcelDta[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
+head(selected_columns, n = nrow(selected_columns))
+
+#d.
+save(selected_columns, file = "new.RData")
+
+#e.
+load("new.RData")
+head(selected_columns)
+tail(selected_columns)
 
 
 #10
