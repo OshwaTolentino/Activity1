@@ -23,7 +23,7 @@ age2
 
 #b. The 2nd is 28 and 4th element is 36.
 doubleElement <-ages[c(2,4)]
-dou
+doubleElement
 
 #c.
 exclude <- ages[-c(4, 12)]
