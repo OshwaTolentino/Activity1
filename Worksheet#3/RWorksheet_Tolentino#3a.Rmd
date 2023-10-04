@@ -3,6 +3,7 @@ output:
   pdf_document: default
   html_document: default
 ---
+#1. VECTORS
 #a.
 first_eleven <- LETTERS[1:11]
 first_eleven
@@ -59,7 +60,7 @@ lowest_temp_city <- df$City[which.min(df$Temperature)]
 highest_temp_city 
 lowest_temp_city 
 
-#2 part 2
+#2 MATRICES
 #a. 
 m <- matrix(c(1:8,11:14),ncol=4,nrow=3)
 m
@@ -127,8 +128,8 @@ m
 [6,]    6   14
 
 
-#3
-#Number 3
+
+#3. ARRAYS
 #A
 values <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
 array_3d <- array(values, dim = c(2, 4, 3))
