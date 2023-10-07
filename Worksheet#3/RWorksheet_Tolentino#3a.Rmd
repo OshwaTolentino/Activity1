@@ -5,64 +5,68 @@ date: "2023-10-07"
 output: pdf_document
 ---
 #1. VECTORS
+#A.
 ``` {r number1a}
 first_eleven <- LETTERS[1:11]
 first_eleven
 ```
-
+#B.
 ``` {r number1b}
 odd_letters <- LETTERS[seq(1,25,2)]
 odd_letters
 ```
 
-
+#C.
 ``` {r number1c}
 vowels <- c(letters[which(letters %in% c("a","e","i","o","u"))], 
             LETTERS[which(LETTERS %in% c("A","E","I","O","U"))])
 vowels
 ```
 
-
+#D.
 ``` {r number1d}
 last5letter <- tail(letters, 5)
 last5letter
 ```
-
+#E.
 ``` {r number1e}
 letterbetween15to24 <- letters[15:24]
 letterbetween15to24
 ```
 
+#NUMBER 2
+#A.
 ``` {r number2a}
 city <- c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
 city
 ```
-
+#B.
 ``` {r number2b}
 temp <- c(42, 39, 34, 34, 30, 27)
 temp
 ```
-
+#C.
 ``` {r number2c}
 df <- data.frame(city, temp)
 df
 ```
-
+#D.
 ``` {r number2d}
 names(df) <- c("City", "Temperature")
 df
 ```
 
-
+#E.
 ``` {r number2e}
 str(df)
 ```
 
-
+#F.
 ``` {r number2f}
 df[3:4,]
 ```
 
+#G.
 ``` {r number2g}
 highest_temp_city <- df$City[which.max(df$Temperature)]
 lowest_temp_city <- df$City[which.min(df$Temperature)]
@@ -72,37 +76,37 @@ lowest_temp_city
 
 
 #2 MATRICES
-
+#A.
 ``` {r number#2a} 
 m <- matrix(c(1:8,11:14),ncol=4,nrow=3)
 m
 ```
-
+#B.
 ``` {r number#2b} 
  
 matrix(c(1:8,11:14),ncol=4,nrow=3) * 2
 ```
 
-
+#C.
 ``` {r number#2c} 
 matrix(c(1:8,11:14),ncol=4,nrow=3)[2,]
 ```
 
-
+#D.
 ``` {r number#2d} 
 matrix(c(1:8,11:14),ncol=4,nrow=3)[1:2,c(3,4)]
 ```
 
-
+#E.
 ``` {r number#2e} 
 matrix(c(1:8,11:14),ncol=4,nrow=3)[3,c(2,3)]
 ```
 
-
+#F.
 ``` {r number#2f} 
 matrix(c(1:8,11:14),ncol=4,nrow=3)[,4]
 ```
-
+#G.
 ``` {r number#2g} 
 mat <- matrix(c(1:8,11:14)*2,ncol=4,nrow=3)
 rownames(mat) <- c("isa","dalawa","tatlo")
@@ -110,7 +114,7 @@ colnames(mat) <- c("uno","dos","tres","quatro")
 mat
 ```
 
-
+#H.
 ``` {r number#2h}  
 dim(m) <- c(6,2)
 m
@@ -118,16 +122,18 @@ m
 
 
 #3. ARRAYS
+#A.
 ``` {r number#3a} 
 values <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
 array_3d <- array(values, dim = c(2, 4, 3))
 values
 array_3d
 ```
+#B.
 ``` {r number#3b} 
 #B: The array has three dimensions.
 ```
-
+#C.
 ``` {r number#3c} 
 dimnames(array_3d) <- list(c("a", "b"), LETTERS[1:4], c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array"))
 array_3d
