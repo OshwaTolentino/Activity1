@@ -4,7 +4,8 @@ author: "Aaron Joshua Tolentino"
 date: "2023-10-07"
 output: pdf_document
 ---
-
+#NUMBER 1
+#A.
 ``` {r number1a}
 household <- data.frame (
   Respondents = 1:20, 
@@ -16,46 +17,47 @@ household <- data.frame (
 )
 household
 ```
-
+#B.
 ``` {r number1b}
 str(household)
 summary(household)
 ```
 
-
+#C.
 ``` {r number1c}
 mean_siblings <- mean(household$Siblings_at_school)
 mean_siblings == 5
 ```
 
-
+#D.
 ``` {r number1d}
 subset1 <- household[1:2, ]
 subset1
 ```
 
-
+#E.
 ``` {r number1e}
 subset2 <- household[c(3, 5), c(2, 4)]
 subset2
 ```
+#F.
 ``` {r number1f}
 types_houses <- household$Types_of_houses
 types_houses
 ```
-
+#G.
 ``` {r number1g}
 male_farmer <- subset(household, Sex == 1 & Fathers_Occupation == 1)
 male_farmer
 ```
 
-
+#H.
 ``` {r number1h}
 female_greater_than_5_siblings <- subset(household, Sex == 2 & Siblings_at_school >= 5)
 female_greater_than_5_siblings
 ```
 
-
+#NUMBER 2
 ``` {r number2} 
 df <- data.frame(
   Ints = integer(),
@@ -71,8 +73,7 @@ str(df)
 #Output
 The output shows that the data frame has 0 observations (rows) and 5 variables (columns) with their respective data types. The "Factors" column is empty since there are no levels defined yet.
 
-
-
+#NUMBER 3
 ``` {r number3}
 household_data <- data.frame (
   Respondents = 1:10, 
@@ -85,11 +86,11 @@ household_data <- data.frame (
 household_data
 write.csv(household_data, file = "HouseholdData.csv", row.names = FALSE)
 ```
-
+#A.
 ``` {r number3a}
 household_data <- read.csv("HouseholdData.csv")
 ```
-
+#B.
 ``` {r number3b}
 household_data$Sex <- factor(household_data$Sex)
 household_data$Sex <- as.integer(factor(household_data$Sex, 
@@ -97,7 +98,7 @@ household_data$Sex <- as.integer(factor(household_data$Sex,
                                     labels = c(1, 2)))
 household_data
 ```
-
+#C.
 ``` {r number3c}
 household_data$Types_of_houses <- factor(household_data$Types_of_houses)
 household_data$Types_of_houses <- as.integer(factor(household_data$Types_of_houses,
@@ -106,7 +107,7 @@ household_data$Types_of_houses <- as.integer(factor(household_data$Types_of_hous
 print(household_data)
 ```
 
-
+#D.
 ``` {r number3d}
 household_data$Fathers_Occupation <- factor(household_data$Fathers_Occupation)
 household_data$Fathers_Occupation <- as.character(factor(household_data$Fathers_Occupation,
@@ -120,13 +121,13 @@ print(household_data)
 
 ```
 
-
+#E.
 ``` {r number3e}
 female_driver <- subset(household_data, Sex == 2 & Fathers_Occupation == "Driver")
 female_driver
 ```
 
-
+#F.
 ``` {r number3f}
 greater_than_5_siblings <- subset(household_data, Siblings_at_school >= 5)
 greater_than_5_siblings
