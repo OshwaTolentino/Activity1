@@ -131,7 +131,40 @@ female_driver
 greater_than_5_siblings <- subset(household_data, Siblings_at_school >= 5)
 greater_than_5_siblings
 ```
+#4. INTERPRET THE GRAPH
+The graph you've described appears to be a sentiment analysis over time on Twitter data, specifically for the dates July 14, 15, 17, 18, 20, and 21 in the year 2020. The sentiment analysis categorizes tweets into three sentiment groups: negative, neutral, and positive. Here's an interpretation of the data:
 
+- July 14, 2020:
+  - Negative count: Nearly 2,500 tweets were categorized as negative.
+  - Neutral count: Around 1,500 tweets were categorized as neutral.
+  - Positive count: Approximately 1,750 tweets were categorized as positive.
+
+- July 15, 2020:
+  - Negative count: Over 4,000 tweets were categorized as negative.
+  - Neutral count: About 2,750 tweets were categorized as neutral.
+  - Positive count: Roughly 3,200 tweets were categorized as positive.
+
+- July 17, 2020:
+  - Negative count: There were approximately 3,250 tweets categorized as negative.
+  - Neutral count: Around 1,800 tweets were categorized as neutral.
+  - Positive count: Almost 2,500 tweets were categorized as positive.
+
+- July 18, 2020:
+  - Negative count: There were still around 3,250 tweets categorized as negative.
+  - Neutral count: About 2,000 tweets were categorized as neutral.
+  - Positive count: Approximately 2,500 tweets were categorized as positive.
+
+- July 20, 2020:
+  - Negative count: There were nearly 2,500 tweets categorized as negative.
+  - Neutral count: Around 1,500 tweets were categorized as neutral.
+  - Positive count: Almost 1,750 tweets were categorized as positive.
+
+- July 21, 2020:
+  - Negative count: Around 4,000 tweets were categorized as negative.
+  - Neutral count: About 2,600 tweets were categorized as neutral.
+  - Positive count: Roughly 3,300 tweets were categorized as positive.
+
+From this data, it seems that there were fluctuations in sentiment over the specified dates. July 15th and July 21st had higher numbers of negative and positive tweets compared to the other dates, indicating a potential increase in sentiment-related Twitter activity on those days. July 14th and July 20th had lower counts across all sentiment categories. The data suggests a varying sentiment landscape on Twitter during this period in 2020
 
 
 
