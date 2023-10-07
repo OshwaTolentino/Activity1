@@ -1,6 +1,6 @@
 ---
-title: "Untitled"
-author: "Josh"
+title: "RWorksheet_Tolentino#3b"
+author: "Aaron Joshua Tolentino"
 date: "2023-10-07"
 output: pdf_document
 ---
