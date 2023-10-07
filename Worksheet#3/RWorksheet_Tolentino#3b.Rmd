@@ -1,0 +1,137 @@
+---
+title: "Untitled"
+author: "Josh"
+date: "2023-10-07"
+output: pdf_document
+---
+
+``` {r number1a}
+household <- data.frame (
+  Respondents = 1:20, 
+  Sex = c(2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2), 
+  Fathers_Occupation = c(1, 3, 3, 3, 1, 2, 3, 1, 1, 1, 3, 2, 1, 3, 3, 1, 3, 1, 2, 1), 
+  Person_at_Home = c(5, 7, 3, 8, 5, 9, 6, 7, 8, 4, 7, 5, 4, 7, 8, 8, 3, 11, 7, 6),
+  Siblings_at_school = c(6, 4, 4, 1, 2, 1, 5, 3, 1, 2, 3, 2, 5, 5, 2, 1, 2, 5, 3, 2),
+  Types_of_houses = c(1, 2, 3, 1, 1, 3, 3, 1, 2, 3, 2, 3, 2, 2, 3, 3, 3, 3, 3, 2)
+)
+household
+```
+
+``` {r number1b}
+str(household)
+summary(household)
+```
+
+
+``` {r number1c}
+mean_siblings <- mean(household$Siblings_at_school)
+mean_siblings == 5
+```
+
+
+``` {r number1d}
+subset1 <- household[1:2, ]
+subset1
+```
+
+
+``` {r number1e}
+subset2 <- household[c(3, 5), c(2, 4)]
+subset2
+```
+``` {r number1f}
+types_houses <- household$Types_of_houses
+types_houses
+```
+
+``` {r number1g}
+male_farmer <- subset(household, Sex == 1 & Fathers_Occupation == 1)
+male_farmer
+```
+
+
+``` {r number1h}
+female_greater_than_5_siblings <- subset(household, Sex == 2 & Siblings_at_school >= 5)
+female_greater_than_5_siblings
+```
+
+
+``` {r number2} 
+df <- data.frame(
+  Ints = integer(),
+  Doubles = double(),
+  Characters = character(),
+  Logicals = logical(),
+  Factors = factor(),
+  stringsAsFactors = FALSE
+)
+cat("Structure of the empty dataframe:\n")
+str(df)
+```
+#Output
+The output shows that the data frame has 0 observations (rows) and 5 variables (columns) with their respective data types. The "Factors" column is empty since there are no levels defined yet.
+
+
+
+``` {r number3}
+household_data <- data.frame (
+  Respondents = 1:10, 
+  Sex = c("Male", "Female", "Female", "Male", "Male", "Female", "Female", "Male", "Female", "Male"), 
+  Fathers_Occupation = c(1,2,3,3,1,2,2,3,1,3), 
+  Person_at_Home = c(5,7,3,8,6,4,4,2,11,6),
+  Siblings_at_school = c(2,3,0,5,2,3,1,2,6,2),
+  Types_of_houses = c("Wood", "Congrete", "Congrete", "Wood", "Semi-Congrete", "Semi-Congrete", "Wood", "Semi-Congrete", "Semi-Congrete", "Congrete")
+)
+household_data
+write.csv(household_data, file = "HouseholdData.csv", row.names = FALSE)
+```
+
+``` {r number3a}
+household_data <- read.csv("HouseholdData.csv")
+```
+
+``` {r number3b}
+household_data$Sex <- factor(household_data$Sex)
+household_data$Sex <- as.integer(factor(household_data$Sex, 
+                                 levels = c("Male", "Female"),
+                                    labels = c(1, 2)))
+household_data
+```
+
+``` {r number3c}
+household_data$Types_of_houses <- factor(household_data$Types_of_houses)
+household_data$Types_of_houses <- as.integer(factor(household_data$Types_of_houses,
+                                              levels = c("Wood", "Congrete", "Semi-Congrete"),
+                                                    labels = c(1, 2, 3)))
+print(household_data)
+```
+
+
+``` {r number3d}
+household_data$Fathers_Occupation <- factor(household_data$Fathers_Occupation)
+household_data$Fathers_Occupation <- as.character(factor(household_data$Fathers_Occupation,
+                                            
+                                            levels = c(1, 2, 3),
+                                            labels = c("Farmer", "Driver", "Others")))
+
+# Print the updated data frame
+print(household_data)
+
+
+```
+
+
+``` {r number3e}
+female_driver <- subset(household_data, Sex == 2 & Fathers_Occupation == "Driver")
+female_driver
+```
+
+
+``` {r number3f}
+greater_than_5_siblings <- subset(household_data, Siblings_at_school >= 5)
+greater_than_5_siblings
+```
+
+
+
+
