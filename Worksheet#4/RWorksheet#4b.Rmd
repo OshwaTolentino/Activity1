@@ -1,0 +1,71 @@
+---
+title: "RWorksheet#4b"
+author: "Aaron Joshua Tolentino"
+date: "2023-11-08"
+output: pdf_document
+---
+
+``` {r num1}
+
+vectorA <- c(1, 2, 3, 4, 5)
+matrixA <- matrix(0, nrow = 5, ncol = 5)
+print(matrixA)
+
+for (i in 1:5) {
+  for (j in 1:5) {
+    matrixA[i, j] <- abs(vectorA[i] - vectorA[j])
+  }
+}
+
+print(matrixA)
+
+```
+``` {r num2}
+num_lines <- 5
+
+for (i in 1:num_lines) {
+  for (j in 1:i) {
+    cat("*")
+  }
+  cat("\n")
+}
+
+```
+
+``` {r num3}
+input_number <- as.numeric(readline("Enter a number to start the Fibonacci sequence: "))
+
+assume_number <- 0
+a <- 0
+b <- 1
+
+repeat {
+
+  if (a > 500) {
+    break
+  }
+  
+
+  if (a >= assume_number) {
+    cat(a, " ")
+  }
+  
+  temp <- a + b
+  a <- b
+  b <- temp
+}
+
+cat("\n")
+
+```
+
+``` {r num4a}
+shoenga <-  read.csv("Shoe_sizes.csv")
+shoenga
+shoenganga <- shoenga[c(1:6),]
+shoenganga
+```
+
+``` {r num4b}
+
+```
