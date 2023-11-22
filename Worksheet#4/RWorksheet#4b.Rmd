@@ -67,5 +67,104 @@ shoenganga
 ```
 
 ``` {r num4b}
+female_data <- subset(shoenga, Gender == "F")
+female_data
+male_data <- subset(shoenga, Gender == "M")
+male_data
+nrow(female_data)
+nrow(male_data)
+#They have both 14 observations
+```
 
+``` {r num4c}
+GraphMF<- table(shoenga$Gender)
+barplot(GraphMF,
+        main = "Number of Males and Females",
+        xlab = "Gender",
+        ylab = "Count",
+        col = c("dodgerblue4", "hotpink4"),
+        legend.text = c("Male", "Female"),
+        beside = TRUE
+)
+```
+
+
+```{r num5}
+Expenses <- c(Food = 60, Electricity = 10, Savings = 5, Miscellaneous = 25)
+
+pie(Expenses,
+    labels = paste(names(Expenses), "\n", sprintf("%.1f%%", prop.table(Expenses) * 100)),
+    col = c("blue", "yellow", "red", "green"),  
+    main = "Monthly Expenses of the Dela Cruz Family"
+)
+```
+
+```{r num6a}
+
+data("iris")
+str(iris)
+
+#The iris dataset has 150 observations and 5 variables.
+#These variables are the Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, and Species.
+```
+``` {r num6b}
+MeanIris<- colMeans(iris[, c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")])
+print(MeanIris)
+```
+
+
+```{r num6c}
+Spec <- table(iris$Species)
+
+clors <- c("midnightblue", "mediumvioletred", "mediumblue")
+
+pie(Spec,
+    labels = paste(names(Spec), "\n", sprintf("%.1f%%", prop.table(Spec) * 100)),
+    col = clors,
+    main = "Species Distribution",
+    cex.main = 1.5,
+    cex = 0.8      
+)
+```
+
+``` {r num6d}
+SetosaSub <- subset(iris, Species == "setosa")
+VersiSub <- subset(iris, Species == "versicolor")
+VirgiSub <- subset(iris, Species == "virginica")
+
+# Display the last six rows of each species
+cat("Last six rows of Setosa:")
+print(tail(SetosaSub))
+
+cat("Last six rows of Versicolor:")
+print(tail(VersiSub))
+
+cat("Last six rows of Virginica:")
+print(tail(VirgiSub))
+```
+
+``` {r num6e}
+
+data(iris)
+
+iris$Species <- as.factor(iris$Species)
+
+plot(iris$Sepal.Length, iris$Sepal.Width,
+     pch = as.integer(iris$Species),
+     col = iris$Species,
+     main = "Iris Dataset",
+     sub = "Sepal width and length",
+     xlab = "Sepal Length",
+     ylab = "Sepal Width"
+)
+```
+
+``` {r num6f}
+#The scatterplot shows similarities between the sepal width and length ranging from 5.5 to 7.0
+```
+
+```{r num7a}
+library(readxl)
+alexa_file <- read_excel("/cloud/project/Worksheet#4/alexa_file.xlsx")
+alexa_file
 ```
