@@ -1,0 +1,23 @@
+---
+title: "RWorksheet_Tolentino#4c"
+author: "Aaron Joshua Tolentino BSIT 2-B"
+date: "2023-11-22"
+output: pdf_document
+---
+
+``` {r num1}
+mpg <- read.csv("Worksheet#4/mpg.csv")
+mpg
+```
+
+``` {r num1b}
+cat_vars <- sapply(mpg, is.factor)
+cat_vars
+#This will return a logical vector with `TRUE` for categorical variables and `FALSE` for continuous variables.
+```
+
+``` {r num1c}
+#The categorical variables in the mpg dataset are `manufacturer`, `model`, `trans`, `drv`, and `fl`. The continuous variables are `displ`, `cty`, `hwy`, and `year`.
+```
+
+
