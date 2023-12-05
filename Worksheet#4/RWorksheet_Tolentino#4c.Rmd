@@ -1,23 +1,317 @@
 ---
-title: "RWorksheet_Tolentino#4c"
-author: "Aaron Joshua Tolentino BSIT 2-B"
-date: "2023-11-22"
+title: "RWorksheet_Tolentino#4c.Rmd"
+author: "Aaron Joshua Tolentino"
 output: pdf_document
+date: "2023-12-03"
 ---
 
-``` {r num1}
-mpg <- read.csv("Worksheet#4/mpg.csv")
-mpg
+```{r a}
+data <- read.csv("mpg.csv")
+data
 ```
 
-``` {r num1b}
-cat_vars <- sapply(mpg, is.factor)
-cat_vars
-#This will return a logical vector with `TRUE` for categorical variables and `FALSE` for continuous variables.
+```{r b}
+#install.packages("ggplot2")
+
+library(ggplot2)
+
+data(mpg)
+
+str(mpg)
+
+#"manufacturer", "model", "trans", "drv", "fl", "class"
 ```
 
-``` {r num1c}
-#The categorical variables in the mpg dataset are `manufacturer`, `model`, `trans`, `drv`, and `fl`. The continuous variables are `displ`, `cty`, `hwy`, and `year`.
+```{r c}
+#"displ," "year," "cyl," "cty,", "hwy"
 ```
 
+```{r 2}
 
+data(mpg)
+
+manufacturer_most_models <- names(sort(table(mpg$manufacturer), decreasing = TRUE))[1]
+
+model_most_variations <- names(sort(table(mpg$model), decreasing = TRUE))[1]
+
+cat("Manufacturer with the most models:", manufacturer_most_models, "\n")
+cat("Model with the most variations:", model_most_variations, "\n")
+
+```
+
+```{r 2.A}
+
+data(mpg)
+
+manufacturer_model_counts <- table(mpg$manufacturer, mpg$model)
+
+manufacturer_unique_models <- sapply(rownames(manufacturer_model_counts), function(manufacturer) {
+  unique_models <- names(which(manufacturer_model_counts[manufacturer,] > 0))
+  return(data.frame(manufacturer = manufacturer, unique_models = length(unique_models)))
+})
+
+print(manufacturer_unique_models)
+
+```
+
+```{r 2.B Base R Plot}
+data(mpg)
+
+manufacturer_model_counts <- table(mpg$manufacturer, mpg$model)
+
+manufacturer_unique_models <- sapply(rownames(manufacturer_model_counts), function(manufacturer) {
+  unique_models <- names(which(manufacturer_model_counts[manufacturer, ] > 0))
+  return(length(unique_models))
+})
+
+result_df <- data.frame(manufacturer = names(manufacturer_unique_models), unique_models = manufacturer_unique_models)
+
+barplot(result_df$unique_models, 
+        names.arg = result_df$manufacturer, 
+        col = "green",
+        xlab = "Manufacturer", 
+        ylab = "Number of Unique Models",
+        main = "Number of Unique Models by Manufacturer",
+        cex.names = 0.8)
+
+```
+
+```{r 2.B GG Plot}
+data(mpg)
+
+manufacturer_model_counts <- table(mpg$manufacturer, mpg$model)
+
+manufacturer_unique_models <- sapply(rownames(manufacturer_model_counts), function(manufacturer) {
+  unique_models <- names(which(manufacturer_model_counts[manufacturer, ] > 0))
+  return(length(unique_models))
+})
+
+result_df <- data.frame(manufacturer = names(manufacturer_unique_models), unique_models = manufacturer_unique_models)
+
+ggplot(data = result_df, aes(x = manufacturer, y = unique_models)) +
+  geom_bar(stat = "identity", fill = "green") +
+  labs(x = "Manufacturer", y = "Number of Unique Models",
+       title = "Number of Unique Models by Manufacturer") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+```
+
+```{r 2.1a}
+ggplot(mpg, aes(model, manufacturer)) + geom_point()
+
+#The code creates a scatter plot using the ggplot2 package in R. In this specific plot, the x-axis represents the car models (model variable), and the y-axis represents the manufacturers (manufacturer variable). Each point on the plot corresponds to a unique combination of a car model and its manufacturer.
+```
+
+```{r 2.B}
+#Coloring by a categorical variable
+ggplot(mpg, aes(model, manufacturer, color = class)) + geom_point()
+```
+
+```{r}
+#Faceting by a categorical variable
+ggplot(mpg, aes(model, manufacturer)) + 
+  geom_point() +
+  facet_wrap(~class)
+```
+
+```{r}
+#Sizing by a numerical variable
+ggplot(mpg, aes(model, manufacturer, size = displ)) + geom_point()
+```
+
+```{r 3}
+data(mpg)
+
+top20 <- head(mpg, 20)
+
+ggplot(top20, aes(x = model, y = year)) +
+  geom_point() +
+  labs(x = "Car Model", y = "Year", title = "Top 20 Observations: Model vs. Year") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+```{r 4}
+library(dplyr)
+
+data(mpg)
+
+cars_per_model <- mpg %>%
+  group_by(model) %>%
+  summarize(number_of_cars = n())
+
+print(cars_per_model)
+
+```
+
+```{r 4.A}
+library(ggplot2)
+
+data(mpg)
+
+top20 <- head(mpg, 20)
+
+ggplot(top20, aes(x = model)) +
+  geom_bar(fill = "skygreen", color = "black") +
+  labs(
+    title = "Top 20 Cars: Number of Observations by Model",
+    x = "Car Model",
+    y = "Number of Observations"
+  ) +
+  theme_minimal()
+
+```
+
+```{r 4.B}
+data(mpg)
+
+top20 <- head(mpg, 20)
+
+ggplot(top20, aes(x = model)) +
+  geom_bar(fill = "skygreen", color = "black") +
+  labs(
+    title = "Top 20 Cars: Number of Observations by Model",
+    x = "Number of Observations",
+    y = "Car Model"
+  ) +
+  theme_minimal() +
+  coord_flip()
+
+```
+
+```{r 5}
+data(mpg)
+
+ggplot(mpg, aes(x = cyl, y = displ, color = displ)) +
+  geom_point() +
+  labs(
+    title = "Relationship between No. of Cylinders and Engine Displacement",
+    x = "Number of Cylinders",
+    y = "Engine Displacement"
+  ) +
+  scale_color_continuous(name = "Engine Displacement") +
+  theme_minimal()
+
+```
+
+```{r 5.A}
+data(mpg)
+
+ggplot(mpg, aes(x = cyl, y = displ, color = displ)) +
+  geom_point() +
+  labs(
+    title = "Relationship between No. of Cylinders and Engine Displacement",
+    x = "Number of Cylinders",
+    y = "Engine Displacement"
+  ) +
+  scale_color_continuous(name = "Engine Displacement") +
+  theme_minimal()
+
+correlation <- cor(mpg$cyl, mpg$displ)
+cat("Correlation Coefficient:", correlation, "\n")
+```
+
+```{r 6}
+data(mpg)
+
+ggplot(mpg, aes(x = displ, y = hwy, color = year)) +
+  geom_point() +
+  labs(
+    title = "Relationship between Engine Displacement and Highway MPG",
+    x = "Engine Displacement",
+    y = "Highway MPG"
+  ) +
+  scale_color_continuous(name = "Year") +
+  theme_minimal()
+```
+
+```{r 6.A}
+num_observations <- read.csv("traffic.csv")
+
+nrow(num_observations)
+```
+
+```{r 6.B}
+library(dplyr)
+
+junction_data <- num_observations %>%
+  filter(!is.na(Junction))
+
+head(junction_data)
+```
+
+```{r 6.C}
+junction_data <- num_observations %>%
+  filter(!is.na(Junction))
+
+ggplot(junction_data, aes(x = DateTime, y = Vehicles, group = Junction, color = Junction)) +
+  geom_line() +
+  labs(title = "Traffic Flow at Each Junction Over Time", x = "Date and Time", y = "Number of Vehicles") +
+  theme_minimal()
+
+```
+
+```{r 7}
+#install.packages("readxl")
+
+library(readxl)
+
+alexa_file <- read_excel("alexa_file.xlsx")
+alexa_file
+
+```
+
+```{r 7.A}
+num_rows <- nrow(alexa_file)
+num_columns <- ncol(alexa_file)
+num_rows
+num_columns
+```
+
+```{r 7.B}
+library(dplyr)
+
+result <- alexa_file %>%
+  group_by(variation) %>%
+  summarize(total_count = n())
+
+print(result)
+```
+
+```{r 7.C}
+library(ggplot2)
+
+ggplot(alexa_file, aes(x = variation)) +
+  geom_bar() +
+  labs(title = "Distribution of Variations", x = "Variation", y = "Count") +
+  theme_minimal()
+
+```
+
+```{r 7.D}
+library(ggplot2)
+
+alexa_file$date <- as.Date(alexa_file$date)
+
+ggplot(alexa_file, aes(x = date, y = verified_reviews, group = 1)) +
+  geom_line(color = "green") +
+  labs(title = "Verified Reviews Over Time",
+       x = "Date",
+       y = "Number of Verified Reviews") +
+  theme_minimal()
+
+```
+
+```{r 7.E}
+library(ggplot2)
+
+ggplot(alexa_file, aes(x = variation, y = rating, fill = variation)) +
+  geom_boxplot() +
+  labs(title = "Relationship Between Variations and Ratings",
+       x = "Variation",
+       y = "Rating") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
