@@ -96,8 +96,10 @@ View(breastcancer_wisconsin)
 
 
 #9
-install.packages("AppliedPredictiveModeling")
+library(xlsx)
+abalone<- read.csv("Worksheet#6/abalone.csv")
+xlsx::write.xlsx(abalone, "abalone.xls", col.names=TRUE, row.names=TRUE, sheetName="sample")
 library("AppliedPredictiveModeling")
-view(abalone)
 head(abalone)
 summary(abalone)
+
